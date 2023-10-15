@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Scrolling site</title>
+    <link rel="stylesheet" href="scroll.css">
+    <link rel="icon" href="icon.png">
+
+    <style>
+        
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 1500vh;
+}
+
+.banner {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+}
+
+.banner video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <video paused muted id="video">
+            <source src="images/pexels-marros-10780284 (2160p).mp4" type="video/mp4">
+        </video>
+    </div>
+    <script>
+        let video = document.getElementById('video');
+        let lastScrollTime = 0;
+
+        function updateVideoTime() {
+            let currentTime = window.pageYOffset / 100;
+            if (Math.abs(video.currentTime - currentTime) > 0.01) {
+                video.currentTime = currentTime;
+            }
+            lastScrollTime = Date.now();
+        }
+
+        function scrollHandler() {
+            if (Date.now() - lastScrollTime > 20) {
+                updateVideoTime();
+            }
+            requestAnimationFrame(scrollHandler);
+        }
+
+        window.addEventListener('scroll', scrollHandler);
+        window.addEventListener('resize', updateVideoTime);
+        updateVideoTime(); 
+    </script>
+</body>
+</html>

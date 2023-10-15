@@ -1,0 +1,63 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html,body{
+    height: 100%;
+    width: 100%;
+}
+
+.main{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #dadada;
+}
+
+.center{
+   
+   height:70%;
+   width:70%;
+   position: relative;
+}
+
+.img{
+    height: 100%;
+    width: 0%;
+    position: absolute;
+    overflow: hidden;
+    
+}
+
+img{
+    height: 100%;
+    width: 100%;
+}
+
+.text{
+    height: 150px;
+    width: 400px;
+    position: absolute;
+    overflow: hidden;
+    z-index: 99;
+    bottom: 15%;
+    font-size: 20px;
+    
+}
+
+.text h1{
+    top: 150px;
+    position: absolute;
+}
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="md.css">
+</head>
+<body>
+    
+    <section class="container">
+        <div class="content">
+            <h1>Scroll to Begin</h1>
+            <p>Start it like this..</p>
+        </div>
+    </section>
+
+    <section class="container">
+        <div class="content">
+            <h1>Step 1</h1>
+            <p>Start it like this..</p>
+        </div>
+    </section>
+
+    <section class="container">
+        <div class="content">
+            <h1>Step 2</h1>
+            <p>Start it like this..</p>
+        </div>
+    </section>
+
+    <section class="container">
+        <div class="content">
+            <h1>Step 3</h1>
+            <p>Start it like this..</p>
+        </div>
+    </section>
+
+    <section class="container">
+        <div class="content">
+            <h1>Step 4</h1>
+            <p>Start it like this..</p>
+        </div>
+    </section>
+
+    <div id="set-height"></div>
+
+    <video id="v0" tabindex="0", autobuffer preload>
+        <source type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"' src="images/fingers.mp4"></source>
+    </video>
+    <script src="md.js"></script>
+    <script>
+        var playbackConst = 1000; // You can adjust this value for smoother or faster playback
+
+        enterView({
+            selector: 'section',
+            enter: function(el) {
+                el.classList.add('entered');
+            }
+        });
+
+        var setHeight = document.getElementById("set-height");
+        var vid = document.getElementById('v0');
+
+        vid.addEventListener('loadedmetadata', function() {
+            setHeight.style.height = Math.floor(vid.duration) * playbackConst + "px";
+        });
+
+        function scrollPlay() {  
+            var frameNumber  = window.pageYOffset / playbackConst;
+            vid.currentTime  = frameNumber;
+            window.requestAnimationFrame(scrollPlay);
+        }
+
+        // Uncomment the line below if you want to start playback immediately
+        // window.requestAnimationFrame(scrollPlay);
+        
+        // Uncomment the line below if you want to start playback when the user scrolls
+        // window.addEventListener('scroll', scrollPlay);
+    </script>
+</body>
+</html>
